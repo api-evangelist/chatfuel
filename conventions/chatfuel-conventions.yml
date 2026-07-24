@@ -1,0 +1,51 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.chatfuel.com/en/collections/168839-api
+summary: >-
+  Cross-cutting request/response semantics for the Chatfuel Broadcasting and
+  Dashboard HTTP APIs, captured from the Help Center. Chatfuel does not publish a
+  machine-readable OpenAPI spec; these conventions are drawn from the prose docs.
+authentication:
+  style: token
+  detail: >-
+    Bearer Dashboard API Token for the Dashboard API; per-bot chatfuel_token
+    request parameter for the Broadcasting API. See
+    authentication/chatfuel-authentication.yml.
+base_urls:
+- api: Broadcasting API
+  url: https://api.chatfuel.com
+- api: Dashboard API
+  url: https://dashboard.chatfuel.com/api
+transport:
+  protocol: https
+  encoding: JSON
+  methods:
+  - POST
+  - GET
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency-key header or parameter is documented for either API. Repeated
+    broadcast POSTs are not deduplicated by Chatfuel.
+pagination:
+  supported: unknown
+  detail: No pagination scheme is documented for the public Dashboard/Broadcasting API surface.
+rate_limit_signaling:
+  detail: >-
+    Broadcasting API is capped at 25 RPS per bot (see
+    rate-limits/chatfuel-rate-limits.yml). No standard rate-limit response
+    headers are documented.
+versioning:
+  scheme: none
+  detail: >-
+    No API version segment or version header is documented. The Dashboard API is
+    described as "designed primarily for internal use and subject to change
+    without prior notice." See lifecycle/chatfuel-lifecycle.yml.
+error_envelope:
+  detail: >-
+    No formal error-object schema (e.g. RFC 9457 problem+json) is documented;
+    errors are returned as JSON with HTTP status codes.
+cross_references:
+  authentication: authentication/chatfuel-authentication.yml
+  rate_limits: rate-limits/chatfuel-rate-limits.yml
+  lifecycle: lifecycle/chatfuel-lifecycle.yml

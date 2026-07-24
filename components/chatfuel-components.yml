@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md
+summary: >-
+  Chatfuel ships an embeddable client-side chat widget that businesses add to
+  their own website to expose the same AI/flow automation used on WhatsApp,
+  Instagram, and Messenger. It is a hosted/prebuilt front-end surface installed
+  via a site snippet, distinct from the server-side APIs.
+components:
+- family: Website Chat Widget
+  kind: embeddable-widget
+  description: >-
+    A configurable live-chat / AI-assistant widget added to any website. Docs
+    cover adding it to a site, changing widget settings, toggling it on/off, and
+    its main features (conversation flows, AI answers, live-agent handoff).
+  docs:
+  - https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md
+  - https://docs.chatfuel.com/en/articles/9304630-chat-widget-main-features.md
+  - https://docs.chatfuel.com/en/articles/9268254-change-chat-widget-settings.md
+  - https://docs.chatfuel.com/en/articles/9304852-turn-on-off-chat-widget.md

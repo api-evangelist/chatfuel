@@ -1,0 +1,17 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.chatfuel.com/en/articles/790461-broadcasting-api
+limits:
+- api: Chatfuel Broadcasting API
+  scope: per-bot
+  limit_count: 25
+  window: 1s
+  unit: requests
+  description: >-
+    The Broadcasting API accepts up to 25 requests per second (RPS) per bot to
+    https://api.chatfuel.com/bots/{BOT_ID}/users/{USER_ID}/send. Exceeding the
+    limit results in throttled/failed broadcast requests.
+  source: https://docs.chatfuel.com/en/articles/790461-broadcasting-api
+notes: >-
+  Note that Meta/Facebook Messaging platform limits and WhatsApp per-conversation
+  pricing apply downstream of Chatfuel's own broadcasting rate limit.

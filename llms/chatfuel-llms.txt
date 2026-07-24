@@ -1,0 +1,45 @@
+# Chatfuel Help Center
+
+> For assistance, please contact us at team@chatfuel.com
+
+## Português do Brasil
+
+### Integrações
+
+- [Configurar seu fluxo](https://docs.chatfuel.com/pt-BR/articles/9304281-configurar-seu-fluxo.md)
+
+### Chat widget
+
+- [Principais funcionalidades do widget de chat](https://docs.chatfuel.com/pt-BR/articles/9304630-principais-funcionalidades-do-widget-de-chat.md)
+- [Comece com um novo fluxo](https://docs.chatfuel.com/pt-BR/articles/9291799-comece-com-um-novo-fluxo.md)
+- [Adicionar o widget de chat ao seu site](https://docs.chatfuel.com/pt-BR/articles/9304122-adicionar-o-widget-de-chat-ao-seu-site.md)
+- [Alterar configurações do widget de chat](https://docs.chatfuel.com/pt-BR/articles/9268254-alterar-configuracoes-do-widget-de-chat.md)
+- [Ativar/desativar o widget de chat](https://docs.chatfuel.com/pt-BR/articles/9304852-ativar-desativar-o-widget-de-chat.md)
+
+## English
+
+### Integrations 
+
+- [Configure your flow](https://docs.chatfuel.com/en/articles/9304281-configure-your-flow.md)
+
+### Chat widget
+
+- [Chat widget main features](https://docs.chatfuel.com/en/articles/9304630-chat-widget-main-features.md)
+- [Start with a new flow](https://docs.chatfuel.com/en/articles/9291799-start-with-a-new-flow.md)
+- [Add chat widget to your site](https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md)
+- [Change chat widget settings](https://docs.chatfuel.com/en/articles/9268254-change-chat-widget-settings.md)
+- [Turn on/off chat widget](https://docs.chatfuel.com/en/articles/9304852-turn-on-off-chat-widget.md)
+
+## Español
+
+### Integraciones
+
+- [Configura tu flujo](https://docs.chatfuel.com/es/articles/9304281-configura-tu-flujo.md)
+
+### Chat widget
+
+- [Funciones principales del widget de chat](https://docs.chatfuel.com/es/articles/9304630-funciones-principales-del-widget-de-chat.md)
+- [Comienza con un nuevo flujo](https://docs.chatfuel.com/es/articles/9291799-comienza-con-un-nuevo-flujo.md)
+- [Agregar el widget de chat a tu sitio](https://docs.chatfuel.com/es/articles/9304122-agregar-el-widget-de-chat-a-tu-sitio.md)
+- [Cambiar la configuración del widget de chat](https://docs.chatfuel.com/es/articles/9268254-cambiar-la-configuracion-del-widget-de-chat.md)
+- [Activar/desactivar el widget de chat](https://docs.chatfuel.com/es/articles/9304852-activar-desactivar-el-widget-de-chat.md)

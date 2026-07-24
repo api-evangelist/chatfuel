@@ -1,0 +1,20 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.chatfuel.com/api/dashboard-api
+versioning:
+  scheme: none
+  current: null
+  detail: No versioned API path or version header is documented.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No formal deprecation or Sunset/Deprecation (RFC 8594) policy is published.
+    The Dashboard API docs warn only that the API is "designed primarily for
+    internal use and is subject to change without prior notice," which is a
+    change-notice caveat rather than a deprecation policy.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.chatfuel.com/
+deprecated_operations: []

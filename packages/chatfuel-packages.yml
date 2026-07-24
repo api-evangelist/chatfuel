@@ -1,0 +1,25 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.npmjs.com/search?q=chatfuel
+summary: >-
+  Chatfuel does not publish a first-party client SDK. The libraries below are
+  community-maintained wrappers over the public Broadcasting/Dashboard APIs and
+  are marked official:false. No SDKs pointer is wired in apis.yml because no
+  first-party SDK exists.
+packages:
+- language: javascript
+  registry: npm
+  name: chatfuel-api
+  url: https://www.npmjs.com/package/chatfuel-api
+  install: npm install chatfuel-api
+  official: false
+  author: eric-mathison
+  description: Community library to simplify sending messages and broadcasts to a Chatfuel bot.
+- language: javascript
+  registry: npm
+  name: chatfuel-broadcast
+  url: https://www.npmjs.com/package/chatfuel-broadcast
+  install: npm install chatfuel-broadcast
+  official: false
+  author: MarcL
+  description: Community HTTP client for calling the Chatfuel broadcast API.
