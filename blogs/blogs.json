@@ -2,10 +2,13 @@
   "repo": "chatfuel",
   "feeds": [
     {
-      "source": "https://docs.chatfuel.com/en/",
-      "error": "HTTPError"
+      "source": "https://help.chatfuel.com/",
+      "feed_url": "https://help.chatfuel.com/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-08-06T14:08:46Z"
+  "fetched": "2026-08-15T12:22:01Z"
 }
