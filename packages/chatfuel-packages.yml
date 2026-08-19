@@ -1,11 +1,24 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://www.npmjs.com/search?q=chatfuel
+source: https://registry.npmjs.org/-/v1/search?text=chatfuel
+registries_checked:
+- {registry: npm, result: community-only}
+- {registry: pypi, result: none}
+- {registry: rubygems, result: none}
+- {registry: packagist, result: none}
+- {registry: crates.io, result: none}
+- {registry: nuget, result: none}
+- {registry: maven-central, result: none}
+- {registry: pkg.go.dev, result: none}
 summary: >-
-  Chatfuel does not publish a first-party client SDK. The libraries below are
-  community-maintained wrappers over the public Broadcasting/Dashboard APIs and
-  are marked official:false. No SDKs pointer is wired in apis.yml because no
-  first-party SDK exists.
+  Chatfuel publishes no first-party client SDK on any package registry. The
+  libraries below are community-maintained wrappers over the (now
+  undocumented) Broadcasting API and are marked official:false. Every one of
+  them predates the current panel.chatfuel.com API by four years or more and
+  none wraps it, so all are abandonment signals rather than usable clients — no
+  SDKs pointer is wired in apis.yml because no first-party SDK exists. The
+  company's only first-party public code is an examples repository, not a
+  package (see first_party_code below).
 packages:
 - language: javascript
   registry: npm
@@ -13,13 +26,66 @@ packages:
   url: https://www.npmjs.com/package/chatfuel-api
   install: npm install chatfuel-api
   official: false
-  author: eric-mathison
-  description: Community library to simplify sending messages and broadcasts to a Chatfuel bot.
+  author: eric.mathison
+  version: 2.1.0
+  published: '2021-07-03'
+  repository: https://github.com/eric-mathison/chatfuel-api
+  description: >-
+    A library to simplify sending messages and broadcasts to a Chatfuel bot over
+    Facebook Messenger.
+  note: >-
+    Last published 2021-07-03, five years before this check. Wraps the legacy
+    api.chatfuel.com Broadcasting API whose documentation Chatfuel has since
+    withdrawn; it does not cover the current panel.chatfuel.com contacts API.
 - language: javascript
   registry: npm
   name: chatfuel-broadcast
   url: https://www.npmjs.com/package/chatfuel-broadcast
   install: npm install chatfuel-broadcast
   official: false
-  author: MarcL
-  description: Community HTTP client for calling the Chatfuel broadcast API.
+  author: marcl
+  version: 3.1.0
+  published: '2020-03-10'
+  repository: https://github.com/MarcL/chatfuel-broadcast
+  description: Wrapper for the Chatfuel broadcast API.
+  note: >-
+    Last published 2020-03-10. Same abandonment picture as chatfuel-api — legacy
+    Broadcasting API only.
+- language: javascript
+  registry: npm
+  name: '@pipedream/chatfuel_dashboard_api_'
+  url: https://www.npmjs.com/package/@pipedream/chatfuel_dashboard_api_
+  install: npm install @pipedream/chatfuel_dashboard_api_
+  official: false
+  author: casret
+  version: 0.0.3
+  published: '2025-08-19'
+  description: >-
+    Pipedream integration component for the Chatfuel Dashboard API. Published by
+    Pipedream, an integration platform, not by Chatfuel.
+  note: >-
+    The most recently published Chatfuel client on npm (2025-08-19) and it is a
+    third-party iPaaS connector, not a vendor SDK.
+first_party_code:
+- name: chatfuel-json-api-examples
+  org: chatfuel-lab
+  url: https://github.com/chatfuel-lab/chatfuel-json-api-examples
+  official: true
+  kind: examples
+  registry: null
+  version: null
+  published: null
+  language: typescript
+  license: MIT
+  description: >-
+    Official Chatfuel Lab repository of example serverless (Netlify) functions
+    that a bot calls through the Chatfuel JSON API plugin — business-hours
+    checks, Shopify customer lookup and discount creation, email and phone
+    verification. Each function is invoked as POST
+    https://{netlify-app}.netlify.app/api/functions/{function-name} and returns
+    user attributes to the bot.
+  note: >-
+    Not distributed through any package registry, so there is no metadata
+    endpoint to read a version or release date from — version and published are
+    null by fact, not by omission. This is sample code, not a client library, so
+    it does not satisfy the SDK check.

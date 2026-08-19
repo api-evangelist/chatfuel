@@ -1,51 +1,110 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://docs.chatfuel.com/en/collections/168839-api
+source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
 summary: >-
-  Cross-cutting request/response semantics for the Chatfuel Broadcasting and
-  Dashboard HTTP APIs, captured from the Help Center. Chatfuel does not publish a
-  machine-readable OpenAPI spec; these conventions are drawn from the prose docs.
+  Cross-cutting request/response semantics for Chatfuel's HTTP surface. Chatfuel
+  publishes no machine-readable contract of any kind, so these conventions are
+  drawn entirely from prose docs and live probes. As of 2026-08-13 the entire
+  public API reference is a single help-center article covering one endpoint;
+  the older Broadcasting and Dashboard API documentation has been withdrawn.
 authentication:
   style: token
   detail: >-
-    Bearer Dashboard API Token for the Dashboard API; per-bot chatfuel_token
-    request parameter for the Broadcasting API. See
-    authentication/chatfuel-authentication.yml.
+    Bearer API token in the Authorization header for the current
+    panel.chatfuel.com surface. See authentication/chatfuel-authentication.yml
+    for the two withdrawn legacy schemes.
 base_urls:
+- api: Contacts API
+  url: https://panel.chatfuel.com/api
+  status: documented
+- api: GraphQL gateway
+  url: https://panel.chatfuel.com/graphql
+  status: undocumented
+  note: Live endpoint, introspection disabled at the Cosmo Router gateway.
 - api: Broadcasting API
   url: https://api.chatfuel.com
+  status: undocumented
+  note: Route still answers (405 on GET to the send path); documentation withdrawn.
 - api: Dashboard API
   url: https://dashboard.chatfuel.com/api
+  status: undocumented
+  note: Host returns a JSON 404 at /api; documentation withdrawn.
 transport:
   protocol: https
   encoding: JSON
   methods:
   - POST
   - GET
+  content_type: application/json
+resource_identifiers:
+  automation_id:
+    detail: >-
+      Path parameter on the contacts endpoint. Documented as being read out of
+      the browser address bar while an automation is open — there is no
+      published API operation that lists or resolves automation IDs, so the
+      identifier a caller needs cannot be obtained programmatically.
+    example_shape: 24-character hex string
+batching:
+  supported: true
+  detail: >-
+    The contacts endpoint takes a `phones` array. "Maximum 1,000 numbers per
+    request." All contacts in one request receive the same
+    `contact_data.properties` map — there is no per-contact property payload.
 idempotency:
   supported: false
   detail: >-
-    No idempotency-key header or parameter is documented for either API. Repeated
-    broadcast POSTs are not deduplicated by Chatfuel.
+    No idempotency key header or parameter is documented on any Chatfuel
+    endpoint. A repeated contact-import POST is not documented as deduplicated,
+    and repeated broadcast POSTs were never deduplicated either. No Idempotency
+    pointer is wired in apis.yml.
 pagination:
   supported: unknown
-  detail: No pagination scheme is documented for the public Dashboard/Broadcasting API surface.
+  detail: >-
+    No read/list operation is published, so no pagination scheme exists to
+    document.
 rate_limit_signaling:
   detail: >-
-    Broadcasting API is capped at 25 RPS per bot (see
-    rate-limits/chatfuel-rate-limits.yml). No standard rate-limit response
-    headers are documented.
+    No standard rate-limit response headers (RateLimit-*, X-RateLimit-*,
+    Retry-After) are documented, and none could be observed because every
+    endpoint requires a credential. The only published numeric limits are the
+    1,000-phones-per-request batch cap and the legacy 25 RPS per-bot
+    broadcasting cap. See rate-limits/chatfuel-rate-limits.yml.
 versioning:
   scheme: none
   detail: >-
-    No API version segment or version header is documented. The Dashboard API is
-    described as "designed primarily for internal use and subject to change
-    without prior notice." See lifecycle/chatfuel-lifecycle.yml.
+    No version segment, version header or dated release train appears on any
+    Chatfuel endpoint. Change is communicated by editing the help center, which
+    is why the withdrawal of the Broadcasting and Dashboard API docs left no
+    deprecation notice behind. See lifecycle/chatfuel-lifecycle.yml.
 error_envelope:
   detail: >-
-    No formal error-object schema (e.g. RFC 9457 problem+json) is documented;
-    errors are returned as JSON with HTTP status codes.
+    No formal error schema (RFC 9457 application/problem+json or otherwise) is
+    documented. Two envelopes were observed live: api.chatfuel.com returns
+    {"code":404,"message":"HTTP 404 Not Found"} and 405 in the same shape, and
+    panel.chatfuel.com/graphql returns the GraphQL standard
+    {"errors":[{"message":"..."}]}. The contacts endpoint returns a bare 401
+    with no body when the Authorization header is absent.
+webhooks:
+  supported: unknown
+  detail: >-
+    No inbound webhook or event-subscription surface is documented. The docs
+    describe triggering a broadcast by setting a contact property and using an
+    "After property is changed" trigger inside the visual flow builder — an
+    in-product automation trigger, not an HTTP callback to a customer endpoint.
+    No AsyncAPI or Webhooks pointer is wired.
+machine_readable_contract:
+  openapi: false
+  asyncapi: false
+  graphql_sdl: false
+  postman: false
+  detail: >-
+    Probed on api, panel, dashboard, app, docs, help and chatfuel.com hosts.
+    /openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs,
+    /redoc all miss. api.chatfuel.com/swagger.json exists but 302s to Google
+    SSO. panel.chatfuel.com/graphql is live with introspection disabled.
 cross_references:
   authentication: authentication/chatfuel-authentication.yml
   rate_limits: rate-limits/chatfuel-rate-limits.yml
   lifecycle: lifecycle/chatfuel-lifecycle.yml
+  plans: plans/chatfuel-plans-pricing.yml
+  well_known: well-known/chatfuel-well-known.yml

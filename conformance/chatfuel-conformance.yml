@@ -1,33 +1,78 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
 source: https://chatfuel.com/gdpr
 standards:
 - id: gdpr
   conforms: true
   evidence: >-
-    Dedicated GDPR compliance page (https://chatfuel.com/gdpr) states Chatfuel has
-    a Data Processing Agreement per GDPR requirements, contractual measures with
-    data sub-processors, and technical/organizational security measures (DPA
-    Appendix 2).
+    Dedicated GDPR compliance page (https://chatfuel.com/gdpr, HTTP 200 on
+    2026-08-13) states Chatfuel has a Data Processing Agreement per GDPR
+    requirements, contractual measures with data sub-processors, and
+    technical/organizational security measures (DPA Appendix 2).
 - id: meta-business-partner
   conforms: true
   evidence: Chatfuel is listed as an official Meta Business Partner (site meta description / homepage).
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI or Swagger document is published. /openapi.json, /openapi.yaml,
+    /swagger.json, /v1/openapi.json, /api-docs and /redoc were probed on
+    api.chatfuel.com, panel.chatfuel.com, dashboard.chatfuel.com,
+    app.chatfuel.com, docs.chatfuel.com, help.chatfuel.com and chatfuel.com.
+    api.chatfuel.com/swagger.json exists but 302s to a Google SSO login via
+    auth.chatfuel.com; every other candidate is a hard 404 or an SPA shell.
+- id: graphql
+  conforms: partial
+  evidence: >-
+    A live GraphQL endpoint runs at https://panel.chatfuel.com/graphql behind a
+    WunderGraph Cosmo Router. It speaks the GraphQL error envelope, but
+    introspection is disabled at the gateway ("GraphQL introspection is disabled
+    by Cosmo Router") and no SDL is published, so the schema is not obtainable
+    by any anonymous means.
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document and no documented event/webhook surface.
 - id: oauth2
   conforms: false
-  evidence: No OAuth 2.0 security scheme is documented; APIs use bearer/token auth.
+  evidence: >-
+    No OAuth 2.0 security scheme is documented; APIs use bearer tokens and a
+    legacy query-parameter token. /.well-known/oauth-authorization-server
+    returns no real document on any host.
 - id: oidc
   conforms: false
+  evidence: /.well-known/openid-configuration returns no real document on any host.
 - id: rfc9457-problem-details
   conforms: false
-  evidence: No application/problem+json error format is documented.
+  evidence: >-
+    No application/problem+json error format. Observed envelopes are a bespoke
+    {"code","message"} JSON object on api.chatfuel.com and the GraphQL
+    {"errors":[...]} shape on panel.chatfuel.com.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: >-
+    No security.txt on any Chatfuel-operated host. The one 200 observed, on
+    docs.chatfuel.com, is Intercom's own document (Canonical
+    https://app.intercom.com/.well-known/security.txt) served from a
+    vendor-operated help-center domain — see well-known/chatfuel-well-known.yml.
+- id: rfc8594-sunset
+  conforms: false
+  evidence: No Sunset/Deprecation header support and no deprecation policy.
 - id: soc2
   conforms: false
-  evidence: No SOC 2 attestation is published.
+  evidence: >-
+    No SOC 2 attestation is published. chatfuel.com/security, /trust and
+    /compliance all return 404; trust.chatfuel.com and security.chatfuel.com do
+    not resolve.
 - id: iso27001
   conforms: false
   evidence: No ISO 27001 certification is published.
 - id: hipaa
   conforms: false
+- id: pci-dss
+  conforms: false
 notes: >-
   Only GDPR is published as a formal compliance program; it feeds the Compliance
-  pointer in apis.yml. No SOC 2 / ISO 27001 / HIPAA / PCI attestations were found.
+  pointer in apis.yml. No SOC 2 / ISO 27001 / HIPAA / PCI attestations, no trust
+  center and no vulnerability-disclosure program were found — see
+  security/chatfuel-domain-security.yml for what was probed. This file is a
+  measurement of what Chatfuel publishes, not an assessment of its practices.

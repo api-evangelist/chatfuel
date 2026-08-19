@@ -1,20 +1,50 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md
+source: https://help.chatfuel.com/website-automation-18234b06ecf880eab2a7ec7ed0a57aa5
 summary: >-
-  Chatfuel ships an embeddable client-side chat widget that businesses add to
-  their own website to expose the same AI/flow automation used on WhatsApp,
-  Instagram, and Messenger. It is a hosted/prebuilt front-end surface installed
-  via a site snippet, distinct from the server-side APIs.
+  Chatfuel ships one embeddable client-side surface: a website chat widget that
+  businesses add to their own site to expose the same AI/flow automation used on
+  WhatsApp, Instagram, Messenger and TikTok. It is a hosted, prebuilt front end
+  installed via an account-specific snippet, distinct from the server-side APIs.
+  There is no published component library, no web-component package and no
+  loader library on any registry — the snippet is generated inside the product,
+  so the distribution is unpinned and a consumer cannot tell which build they
+  receive.
 components:
 - family: Website Chat Widget
   kind: embeddable-widget
   description: >-
-    A configurable live-chat / AI-assistant widget added to any website. Docs
-    cover adding it to a site, changing widget settings, toggling it on/off, and
-    its main features (conversation flows, AI answers, live-agent handoff).
+    A configurable live-chat / AI-assistant widget added to any website. The
+    docs cover installing it, its feature set, its settings, its display modes,
+    and turning it on and off. Documented behaviours include conversation flows,
+    AI answers (Fuely AI) and live-agent handoff.
+  install:
+    method: account-generated script snippet
+    source_of_snippet: Settings -> Website inside the Chatfuel panel
+    placement: >-
+      "Add the code snippet from Settings to your site's HTML" — documented as
+      going inside the <head> tag or immediately before </body>.
+    cdn_url: null
+    package: null
+    version: null
+    note: >-
+      No CDN URL, package name or version is published; the embed code is
+      produced per account inside the product and the help center does not
+      reproduce it. Recorded as null by fact, not by omission.
   docs:
-  - https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md
-  - https://docs.chatfuel.com/en/articles/9304630-chat-widget-main-features.md
-  - https://docs.chatfuel.com/en/articles/9268254-change-chat-widget-settings.md
-  - https://docs.chatfuel.com/en/articles/9304852-turn-on-off-chat-widget.md
+  - https://help.chatfuel.com/set-up-chat-widget-for-website-1ca34b06ecf8805ab96fcbf9b53f809f
+  - 'https://help.chatfuel.com/chat-widget:-features-18234b06ecf88029943cfefa1414e01d'
+  - 'https://help.chatfuel.com/chat-widget:-settings-18234b06ecf8801eb545fb533a3eb4b8'
+  - 'https://help.chatfuel.com/chat-widget:-modes-18234b06ecf880459b1dcaf79de36b27'
+  - 'https://help.chatfuel.com/chat-widget:-turn-onoff-18234b06ecf88012be1ef8b9ab63f3ea'
+  docs_verified: '2026-08-13'
+superseded_docs:
+  note: >-
+    The 2026-07-18 round recorded these same articles on docs.chatfuel.com. That
+    host now returns HTTP 404 on every path; the URLs above are the live
+    successors on help.chatfuel.com and were each verified 200 on 2026-08-13.
+  urls:
+  - {url: 'https://docs.chatfuel.com/en/articles/9304122-add-chat-widget-to-your-site.md', status: 404}
+  - {url: 'https://docs.chatfuel.com/en/articles/9304630-chat-widget-main-features.md', status: 404}
+  - {url: 'https://docs.chatfuel.com/en/articles/9268254-change-chat-widget-settings.md', status: 404}
+  - {url: 'https://docs.chatfuel.com/en/articles/9304852-turn-on-off-chat-widget.md', status: 404}

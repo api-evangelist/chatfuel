@@ -1,0 +1,196 @@
+generated: '2026-08-13'
+method: searched
+source: https://help.chatfuel.com/plans-18234b06ecf880e2b97ce9d80a4f59de
+additional_sources:
+- https://chatfuel.com/pricing
+- https://limits.chatfuel.com/
+- https://help.chatfuel.com/pricing-faq-18234b06ecf88025a546c228bd94de03
+currency: USD
+plan_count: 17
+billing_unit: active contact
+billing_unit_definition: >-
+  "One active contact = one unique person who interacted with you in the last 30
+  days." Counts messages with the automation (Fuely AI), messages with a human
+  team member, and outgoing broadcasts/templates. A contact only becomes new
+  again after 30 days of no activity. Messages within a contact's 30-day window
+  are unlimited.
+summary: >-
+  Chatfuel prices on active contacts, not on API calls or messages. The help
+  center publishes a full per-tier price table for two AI plan families (Fuely
+  Super on GPT-5 mini, Fuely Max on GPT-5) plus a 7-day free trial and a custom
+  Enterprise tier. No plan gates API access separately and no API-specific
+  quota, overage rate or per-call price is published.
+discrepancy_note: >-
+  The marketing pricing page and the help center do not agree. chatfuel.com/pricing
+  markets two tiers — "Chatfuel Light" (free) and "AI PRO" at "$49 USD per month"
+  with a -29% yearly option — while the help center's Plans article (the page the
+  pricing page links to for limits) publishes the Fuely Super / Fuely Max tables
+  below and makes no mention of Light or AI PRO. Both were fetched 2026-08-13 and
+  both returned 200. The help-center table is treated as the operative one here
+  because it is the page the product's Billing tab is documented against; the
+  marketing tiers are recorded separately rather than reconciled.
+plans:
+- name: Trial
+  family: trial
+  price: 0
+  currency: USD
+  period: 7 days
+  note: '"Great for beginners. Use it for 7 days to try Chatfuel features."'
+  source: https://help.chatfuel.com/plans-18234b06ecf880e2b97ce9d80a4f59de
+- name: Super 150
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 150
+  price: 39
+  currency: USD
+  period: month
+  price_6_month_plan: 199
+  price_12_month_plan: 328
+- name: Super 250
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 250
+  price: 49
+  currency: USD
+  period: month
+  price_6_month_plan: 250
+  price_12_month_plan: 412
+- name: Super 500
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 500
+  price: 69
+  currency: USD
+  period: month
+  price_6_month_plan: 403
+  price_12_month_plan: 664
+- name: Super 1,000
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 1000
+  price: 99
+  currency: USD
+  period: month
+  price_6_month_plan: 505
+  price_12_month_plan: 832
+- name: Super 2,000
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 2000
+  price: 159
+  currency: USD
+  period: month
+  price_6_month_plan: 810
+  price_12_month_plan: 1336
+- name: Super 3,000
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 3000
+  price: 199
+  currency: USD
+  period: month
+  price_6_month_plan: 1270
+  price_12_month_plan: 2092
+- name: Super 5,000
+  family: Fuely Super
+  ai_model: GPT-5 mini
+  active_contacts: 5000
+  price: 279
+  currency: USD
+  period: month
+  price_6_month_plan: 1780
+  price_12_month_plan: 2932
+- name: Max 150
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 150
+  price: 59
+  currency: USD
+  period: month
+- name: Max 250
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 250
+  price: 99
+  currency: USD
+  period: month
+- name: Max 500
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 500
+  price: 139
+  currency: USD
+  period: month
+- name: Max 1,000
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 1000
+  price: 199
+  currency: USD
+  period: month
+- name: Max 2,000
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 2000
+  price: 319
+  currency: USD
+  period: month
+- name: Max 3,000
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 3000
+  price: 399
+  currency: USD
+  period: month
+- name: Max 5,000
+  family: Fuely Max
+  ai_model: GPT-5
+  active_contacts: 5000
+  price: 549
+  currency: USD
+  period: month
+- name: Enterprise
+  family: enterprise
+  price: null
+  currency: USD
+  period: custom
+  note: '"Custom plans for scale. Includes priority support and setup from our team."'
+- name: AI PRO
+  family: marketing-page
+  price: 49
+  currency: USD
+  period: month
+  annual_discount: 29%
+  note: >-
+    Published on chatfuel.com/pricing only; not present in the help-center plans
+    table. Recorded for fidelity, see discrepancy_note.
+  source: https://chatfuel.com/pricing
+billing_terms:
+  discounts:
+  - {family: Fuely Super, term: 6 months, discount: 15%}
+  - {family: Fuely Super, term: 12 months, discount: 30%}
+  - {family: Fuely Max, term: month, discount: null, note: monthly billing only}
+  - {plan: AI PRO, term: year, discount: 29%, source: https://chatfuel.com/pricing}
+  overage:
+    model: none
+    detail: >-
+      No overage rate is published. "When you run out of active contacts, you buy
+      a new plan." Contacts do not meter per message.
+  local_currency: >-
+    "Prices are in US dollars. To see prices in your local currency, check the
+    Billing tab in your account."
+usage_limits:
+  source: https://limits.chatfuel.com/
+  detail: >-
+    The dedicated limits page publishes a fair-use framing rather than numbers:
+    "unlimited active contacts", "unlimited messages", static (non-AI) actions
+    such as keyword replies, button flows and broadcasts are "unlimited
+    regardless of volume", and AI processing carries an unstated "fair use
+    allowance per billing period". No numeric AI cap, per-plan API quota or API
+    rate limit is published on this page.
+api_access:
+  gated_by_plan: false
+  detail: >-
+    No plan tier is documented as gating API access. The API token is taken from
+    Settings -> API inside the account; no plan-specific API quota, per-call
+    price or rate tier is published. See rate-limits/chatfuel-rate-limits.yml.

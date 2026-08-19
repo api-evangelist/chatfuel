@@ -1,7 +1,7 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://docs.chatfuel.com/api/dashboard-api
-docs: https://docs.chatfuel.com/en/collections/168839-api
+source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
+docs: https://help.chatfuel.com/other-guides-18234b06ecf8804cb046d94bbc701ff0
 summary:
   types:
   - http
@@ -10,29 +10,83 @@ summary:
   - query
   oauth2_flows: []
   notes: >-
-    Chatfuel uses two distinct token schemes. The Dashboard API authenticates
-    with a Bearer "Dashboard API Token" in the Authorization header; the token is
-    generated once from the dashboard profile and cannot be retrieved again. The
-    Broadcasting API authenticates with a per-bot chatfuel_token passed as a
-    request parameter alongside the bot and user identifiers. No OAuth 2.0 or
-    OpenID Connect surface is documented.
+    Chatfuel has no OpenAPI to derive from, so this profile is read from the
+    published docs. The current, documented scheme is a per-account Bearer API
+    token copied from Settings -> API in the Chatfuel panel and sent in the
+    Authorization header against panel.chatfuel.com. Two older schemes — the
+    Dashboard API bearer token and the per-bot chatfuel_token query parameter
+    for the Broadcasting API — were documented on docs.chatfuel.com, which
+    Chatfuel has since taken down; their hosts still answer, but the auth
+    documentation is gone. No OAuth 2.0 or OpenID Connect surface exists on any
+    host: /.well-known/openid-configuration and
+    /.well-known/oauth-authorization-server were probed on api, panel,
+    dashboard, app and chatfuel.com and none returns a real document (see
+    well-known/chatfuel-well-known.yml).
 schemes:
+- name: PanelBearerToken
+  type: http
+  scheme: bearer
+  status: current
+  description: >-
+    Account API token supplied as `Authorization: Bearer {your_api_token}`.
+    Obtained from Settings -> API -> "Copy API key" inside the Chatfuel panel.
+    Paired with an `{automation_id}` path parameter, read from the browser
+    address bar of the automation being targeted.
+  applies_to: Chatfuel Contacts API (https://panel.chatfuel.com/api)
+  verified: >-
+    POST https://panel.chatfuel.com/api/contacts/{automation_id}/whatsapp/ with
+    no Authorization header returned HTTP 401 on 2026-08-13, confirming the
+    scheme is enforced.
+  source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
 - name: DashboardBearerToken
   type: http
   scheme: bearer
+  status: undocumented
   description: >-
-    Dashboard API Token supplied as `Authorization: Bearer {token}`. Generated
-    from the dashboard profile ("Dashboard API Token" -> "Generate Token"); shown
-    once and must be saved on creation or revoked and regenerated.
+    Dashboard API Token supplied as `Authorization: Bearer {token}`. Was
+    generated from the dashboard profile ("Dashboard API Token" -> "Generate
+    Token"); shown once and had to be saved on creation or revoked and
+    regenerated.
   applies_to: Chatfuel Dashboard API (https://dashboard.chatfuel.com/api)
   source: https://docs.chatfuel.com/api/dashboard-api
+  source_status: 404
+  note: >-
+    Recorded from the previous enrichment round (2026-07-18), when this page was
+    live. Re-probed 2026-08-13: docs.chatfuel.com returns HTTP 404 on every path
+    — the Intercom help center behind it has been retired and no replacement
+    page exists on help.chatfuel.com. Retained as history; not verifiable today.
 - name: BroadcastToken
   type: apiKey
   in: query
   parameter: chatfuel_token
+  status: undocumented
   description: >-
     Per-bot broadcasting token supplied as the `chatfuel_token` request
     parameter on Broadcasting API calls to
-    https://api.chatfuel.com/bots/{BOT_ID}/users/{USER_ID}/send.
+    https://api.chatfuel.com/bots/{BOT_ID}/users/{USER_ID}/send. Was retrieved
+    from the bot's Configure tab -> "Broadcasting API Token".
   applies_to: Chatfuel Broadcasting API (https://api.chatfuel.com)
   source: https://docs.chatfuel.com/en/articles/790461-broadcasting-api
+  source_status: 404
+  note: >-
+    The route still exists — a GET against the send path returned HTTP 405
+    Method Not Allowed on 2026-08-13 rather than the host's usual JSON 404 — but
+    its documentation is gone. A query-string bearer credential is also the
+    weakest placement available: it lands in proxy logs, browser history and
+    Referer headers.
+gated_surfaces:
+- surface: https://api.chatfuel.com/swagger.json
+  observed: 302 -> accounts.google.com
+  detail: >-
+    The API host does serve a Swagger route, but it sits behind a Google-SSO
+    OAuth2 proxy: /swagger.json, /swagger and /swagger-ui all redirect to
+    accounts.google.com with redirect_uri https://auth.chatfuel.com/oauth2/callback
+    and the original URL preserved in the state parameter, whereas every
+    undefined path on the same host returns a plain JSON 404. The contract
+    exists and is not public.
+- surface: https://panel.chatfuel.com/graphql
+  observed: 400 / introspection disabled
+  detail: >-
+    A live GraphQL endpoint answers with a real error envelope. Introspection is
+    switched off at the gateway — "GraphQL introspection is disabled by Cosmo
+    Router" — so no SDL can be read anonymously and none is published elsewhere.

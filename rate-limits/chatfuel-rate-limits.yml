@@ -1,17 +1,58 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://docs.chatfuel.com/en/articles/790461-broadcasting-api
+source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
+limit_count: 2
+summary: >-
+  Chatfuel publishes no rate-limit policy page and no rate-limit response
+  headers. Two hard numbers are documented, and one of the two now lives only in
+  a withdrawn document. Nothing could be observed live because every endpoint
+  requires a credential.
 limits:
+- api: Chatfuel Contacts API
+  scope: per-request
+  limit_count: 1000
+  window: null
+  unit: phone numbers
+  description: >-
+    The contacts import endpoint POST
+    https://panel.chatfuel.com/api/contacts/{automation_id}/whatsapp/ accepts a
+    `phones` array with a documented cap of "Maximum 1,000 numbers per request."
+    No requests-per-second, per-minute or per-day ceiling is published for this
+    endpoint, and no behaviour on exceeding the cap is documented.
+  source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
+  source_status: 200
 - api: Chatfuel Broadcasting API
   scope: per-bot
   limit_count: 25
   window: 1s
   unit: requests
   description: >-
-    The Broadcasting API accepts up to 25 requests per second (RPS) per bot to
+    The Broadcasting API accepted up to 25 requests per second (RPS) per bot to
     https://api.chatfuel.com/bots/{BOT_ID}/users/{USER_ID}/send. Exceeding the
-    limit results in throttled/failed broadcast requests.
+    limit resulted in throttled/failed broadcast requests.
   source: https://docs.chatfuel.com/en/articles/790461-broadcasting-api
+  source_status: 404
+  status: undocumented
+  note: >-
+    Captured in the 2026-07-18 round while the page was live. Re-probed
+    2026-08-13: docs.chatfuel.com returns HTTP 404 on every path and no
+    replacement article exists on help.chatfuel.com. The endpoint still responds
+    (405 on GET) but the published limit is gone, so an integrator has no
+    current statement of it.
+response_headers:
+  documented: []
+  observed: []
+  detail: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header is documented anywhere,
+    and none could be observed: the contacts endpoint returns 401 without a
+    credential and the broadcasting endpoint returns 405 to an unauthenticated
+    GET, so no successful response was available to inspect. An agent has no
+    runtime signal to back off against.
+exhaustion_status_code: null
 notes: >-
-  Note that Meta/Facebook Messaging platform limits and WhatsApp per-conversation
-  pricing apply downstream of Chatfuel's own broadcasting rate limit.
+  Meta/Facebook Messaging platform limits and WhatsApp per-conversation pricing
+  apply downstream of Chatfuel's own limits. Chatfuel's commercial metering is
+  by active contact rather than by request — see
+  plans/chatfuel-plans-pricing.yml — and limits.chatfuel.com publishes an
+  explicitly non-numeric "fair use allowance" for AI processing rather than a
+  quota.

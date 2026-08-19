@@ -1,0 +1,55 @@
+generated: '2026-08-13'
+method: derived
+status: candidate
+source: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: probed
+summary: >-
+  Chatfuel ships no MCP server, hosted or local. No remote endpoint, no npm or
+  PyPI package, and no mention of the Model Context Protocol anywhere on
+  chatfuel.com or help.chatfuel.com. The tool below is a CANDIDATE derived from
+  the single documented HTTP operation Chatfuel publishes — it is what an MCP
+  server would expose if one existed, not something Chatfuel offers. No
+  MCPServer pointer is wired into apis.yml, because that pointer asserts the
+  provider ships a server and this probe shows they do not.
+probes:
+- {url: 'https://panel.chatfuel.com/mcp', method: 'POST tools/list', status: 200, result: miss, note: SPA HTML shell, not an MCP response}
+- {url: 'https://api.chatfuel.com/mcp', method: 'POST tools/list', status: 404, result: miss}
+- {url: 'https://mcp.chatfuel.com/mcp', method: 'POST tools/list', status: null, result: miss, note: host does not resolve}
+- {url: 'https://chatfuel.com/mcp', method: 'POST tools/list', status: 404, result: miss}
+- {url: 'https://chatfuel.com/api/mcp', method: 'POST tools/list', status: 404, result: miss}
+registry_search:
+  npm: no @chatfuel or chatfuel MCP package published
+  docs: no MCP, Model Context Protocol or agent-tooling page on help.chatfuel.com (full 172-URL sitemap read)
+tools:
+- name: create_whatsapp_contacts
+  description: >-
+    Import up to 1,000 WhatsApp phone numbers into a Chatfuel automation and
+    assign a shared set of contact properties to all of them.
+  source_operation: null
+  source_docs: https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d
+  http:
+    method: POST
+    url: https://panel.chatfuel.com/api/contacts/{automation_id}/whatsapp/
+    auth: Authorization Bearer (account API token from Settings -> API)
+  input_schema_source: prose-docs
+  input_schema_note: >-
+    Derived from the documented payload shape, not from a machine-readable
+    contract — Chatfuel publishes no OpenAPI, so no real inputSchema exists to
+    inherit. Documented fields: phones (array of E.164 strings, max 1000) and
+    contact_data.properties (flat string map applied to every contact in the
+    request). automation_id is a path parameter the docs say to read out of the
+    browser address bar; there is no published operation that lists automations,
+    so an agent cannot resolve it programmatically.
+  consequence: write
+crosswalk:
+  emitted: false
+  reason: >-
+    A tool crosswalk binds MCP tools to backing OpenAPI operationIds. Chatfuel
+    publishes no OpenAPI and no MCP server, so there is nothing on either side
+    to bind.

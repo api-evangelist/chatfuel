@@ -1,0 +1,107 @@
+generated: '2026-08-13'
+method: probed
+source: live GET probes of every Chatfuel host named in apis.yml plus the current help/panel hosts
+summary: >-
+  Chatfuel serves no /.well-known/ discovery document of its own. Every RFC 8615
+  path was probed on seven hosts and every one is either a hard 404 or a
+  single-page-app catch-all that answers 200 with the same HTML shell for any
+  path. The one real 200 (a security.txt on docs.chatfuel.com) is Intercom's
+  document, not Chatfuel's — that host is an Intercom-operated help-center
+  domain and the file declares Canonical https://app.intercom.com/.well-known/security.txt
+  with Contact security@intercom.com. It is therefore NOT recorded as a Chatfuel
+  surface and NO WellKnown or SecurityTxt pointer is wired into apis.yml.
+hosts:
+- host: api.chatfuel.com
+  behavior: hard-404
+  note: Returns a real JSON envelope {"code":404,"message":"HTTP 404 Not Found"} for unknown paths.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: panel.chatfuel.com
+  behavior: spa-catch-all
+  note: >-
+    Answers 200 text/html with an identical 2,890-byte application shell for every
+    path probed. Treated as a miss on all paths — a 200 that returns an SPA shell
+    is not a document.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, real_document: false}
+  - {path: /.well-known/openid-configuration, status: 200, real_document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, real_document: false}
+  - {path: /.well-known/oauth-protected-resource, status: 200, real_document: false}
+  - {path: /.well-known/api-catalog, status: 200, real_document: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, real_document: false}
+  - {path: /.well-known/agent-card.json, status: 200, real_document: false}
+  - {path: /.well-known/agent.json, status: 200, real_document: false}
+- host: dashboard.chatfuel.com
+  behavior: spa-catch-all
+  note: Identical 9,773-byte HTML shell returned 200 for every path probed. All treated as misses.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, real_document: false}
+  - {path: /.well-known/openid-configuration, status: 200, real_document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, real_document: false}
+  - {path: /.well-known/api-catalog, status: 200, real_document: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, real_document: false}
+  - {path: /.well-known/agent-card.json, status: 200, real_document: false}
+  - {path: /.well-known/agent.json, status: 200, real_document: false}
+- host: app.chatfuel.com
+  behavior: spa-catch-all
+  note: Identical 157,517-byte HTML shell returned 200 for every path probed. All treated as misses.
+  documents:
+  - {path: /.well-known/security.txt, status: 200, real_document: false}
+  - {path: /.well-known/agent-card.json, status: 200, real_document: false}
+  - {path: /.well-known/agent.json, status: 200, real_document: false}
+  - {path: /.well-known/api-catalog, status: 200, real_document: false}
+- host: chatfuel.com
+  behavior: hard-404
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+- host: help.chatfuel.com
+  behavior: hard-404
+  note: Current Chatfuel help center (Notaku-hosted). robots.txt and sitemap.xml are served; no /.well-known/ documents.
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /robots.txt, status: 200, real_document: true, note: 'User-agent: * plus a Sitemap line; not a discovery document'}
+  - {path: /sitemap.xml, status: 200, real_document: true, note: 172 URLs across en/es/pt}
+- host: docs.chatfuel.com
+  behavior: retired
+  note: >-
+    Former Chatfuel help center. The Intercom workspace behind it has been taken
+    down — every path now returns HTTP 404 from Intercom. The one 200 it still
+    serves is Intercom's own security.txt, not Chatfuel's.
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    real_document: true
+    belongs_to: Intercom
+    file: null
+    note: >-
+      Body declares "Intercom - reporting security vulnerabilities to Intercom",
+      Contact https://bugcrowd.com/intercom and mailto:security@intercom.com,
+      Canonical https://app.intercom.com/.well-known/security.txt. This is the
+      help-center vendor's document served on a vendor-operated host; it is not
+      a Chatfuel vulnerability-disclosure surface and is NOT counted as one.
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+pointers_emitted: []
+pointer_rationale: >-
+  No WellKnown, SecurityTxt or AgentCard pointer is wired. Every 200 observed is
+  either an SPA catch-all shell or a third party's (Intercom's) document. A
+  pointer would assert that Chatfuel serves the surface, which the probe
+  disproves.

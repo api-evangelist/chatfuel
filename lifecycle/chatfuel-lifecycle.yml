@@ -1,20 +1,59 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://docs.chatfuel.com/api/dashboard-api
+source: https://help.chatfuel.com/
 versioning:
   scheme: none
   current: null
-  detail: No versioned API path or version header is documented.
+  detail: >-
+    No versioned API path, version header or dated release train is documented
+    on any Chatfuel host.
 deprecation:
   policy_url: null
   sunset_header: false
   detail: >-
-    No formal deprecation or Sunset/Deprecation (RFC 8594) policy is published.
-    The Dashboard API docs warn only that the API is "designed primarily for
-    internal use and is subject to change without prior notice," which is a
-    change-notice caveat rather than a deprecation policy.
+    No deprecation or Sunset/Deprecation (RFC 8594) policy is published, and the
+    absence is not theoretical. Between 2026-07-18 and 2026-08-13 Chatfuel
+    retired its entire developer documentation set without any notice, redirect
+    or successor page — see documentation_withdrawal below. The old Dashboard API
+    docs carried only a change-notice caveat ("designed primarily for internal
+    use and is subject to change without prior notice"), which is not a
+    deprecation policy. No Deprecation pointer is wired in apis.yml because no
+    policy exists.
+documentation_withdrawal:
+  observed: '2026-08-13'
+  previous_state: '2026-07-18'
+  detail: >-
+    docs.chatfuel.com — the Intercom-hosted help center that carried the
+    Broadcasting API article, the Dashboard API reference and the JSON API
+    plugin documentation — now returns HTTP 404 from Intercom on every path,
+    including its own root. The replacement help center at help.chatfuel.com is
+    a Notaku site whose full sitemap (172 URLs across English, Spanish and
+    Portuguese) contains exactly one API article: "Create contacts in Chatfuel
+    via API". No redirect was left from any old URL, and search engines still
+    index the dead ones.
+  affected:
+  - {url: 'https://docs.chatfuel.com/en/articles/790461-broadcasting-api', status: 404, was: Broadcasting API reference}
+  - {url: 'https://docs.chatfuel.com/api/dashboard-api', status: 404, was: Dashboard API reference}
+  - {url: 'https://docs.chatfuel.com/en/collections/168839-api', status: 404, was: API documentation collection}
+  - {url: 'https://docs.chatfuel.com/en/', status: 404, was: developer portal / help center root}
+  endpoints_still_live:
+  - {url: 'https://api.chatfuel.com/bots/{BOT_ID}/users/{USER_ID}/send', observed: 405 on GET, note: route exists, POST-only, documentation gone}
+  - {url: 'https://panel.chatfuel.com/graphql', observed: 400 empty request body, note: live GraphQL gateway, never documented}
 sla:
   url: null
   uptime_target: null
+  detail: No SLA or uptime commitment is published.
 status_page: https://status.chatfuel.com/
+status_page_detail:
+  platform: Atlassian Statuspage
+  machine_readable: https://status.chatfuel.com/api/v2/status.json
+  verified: '2026-08-13'
+  http_status: 200
+changelog:
+  url: null
+  detail: >-
+    No dated changelog or release-notes page was found. chatfuel.com/changelog
+    and chatfuel.com/whats-new both return 404. Product news appears in
+    long-form marketing posts on chatfuel.com/blog, which is not a changelog.
+    No ChangeLog pointer is wired.
 deprecated_operations: []
