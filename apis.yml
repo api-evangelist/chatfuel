@@ -138,6 +138,9 @@ apis:
   humanURL: https://help.chatfuel.com/
   baseURL: https://dashboard.chatfuel.com/api
   tags:
+  - Dashboards
+  - Bot Management
+  tags_raw:
   - Dashboard
   - Bot Management
   properties:
