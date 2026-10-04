@@ -58,7 +58,7 @@ tags:
 - Conversational AI
 - Messaging
 - Marketing Automation
-- Customer-Support
+- Customer Support
 - WhatsApp
 - Instagram
 - Facebook Messenger
@@ -78,6 +78,7 @@ tags_raw:
 - TikTok
 - No-Code
 - AI Agents
+- Customer-Support
 apis:
 - name: Chatfuel Contacts API
   description: >-
@@ -199,6 +200,8 @@ common:
   url: components/chatfuel-components.yml
 - type: LLMsTxt
   url: llms/chatfuel-llms.txt
+- type: DeveloperPortal
+  url: https://academy.chatfuel.com
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
