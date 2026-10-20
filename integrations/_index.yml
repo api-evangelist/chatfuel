@@ -18,7 +18,7 @@
     spec_file: null
     role: ipaas-connector:zapier
     registered_name: Chatfuel
-    matched_domain: chatfuel.com?src=zapier
+    matched_domain: chatfuel.com
     matched_by: domain
     detected_by: sweep-workflow-automation.py
     detected: '2026-10-15'
