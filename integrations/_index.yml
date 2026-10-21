@@ -28,3 +28,61 @@
     builder: unknown (not in the directory record)
   status: not-a-workflow
   arazzo: null
+- slug: chatfuel-y-combinator
+  label: Y Combinator
+  partner: y-combinator
+  partner_name: Y Combinator
+  category: accelerator portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.ycombinator.com/companies/chatfuel
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Y Combinator company directory (ycombinator.com/companies/<slug>)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Chatfuel
+    register_id: https://www.ycombinator.com/companies/chatfuel
+    register_country: US
+    register_website: http://chatfuel.com
+    matched_domain: chatfuel.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    batch: Winter 2016
+    status: Active
+  status: not-a-workflow
+  arazzo: null
+- slug: chatfuel-500-global
+  label: 500 Global
+  partner: 500-global
+  partner_name: 500 Global
+  category: accelerator portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://500.co/companies
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: 500 Global portfolio (500.co/companies; the page's own JSON 500.co/api/startups)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Chatfuel
+    register_id: https://500.co/companies
+    register_country: United States
+    register_website: chatfuel.com
+    matched_domain: chatfuel.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    batch: GA 11
+    year: '2014'
+  status: not-a-workflow
+  arazzo: null
