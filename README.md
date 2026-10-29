@@ -64,6 +64,118 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Chatfuel is a company surfaced as a portfolio company of y-combinator and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Chatfuel is a no-code AI-powered chatbot and business-automation platform for conversational commerce across Meta-owned messaging channels — WhatsApp, Instagram, Facebook Messenger, TikTok, and an embeddable website chat widget. An official Meta Business Partner, Chatfuel lets teams build automated flows and Fuely AI agents that qualify leads, answer customer questions, take bookings, run re-engagement campaigns, and hand off to live agents. Its developer surface is deliberately small and has been shrinking: the single documented HTTP operation is a Contacts API on panel.chatfuel.com that imports up to 1,000 WhatsApp numbers into an automation with a Bearer account token. The older Broadcasting API (api.chatfuel.com) and Dashboard API (dashboard.chatfuel.com/api) still respond, but Chatfuel retired their documentation along with the whole docs.chatfuel.com help center during 2026, leaving no reference, no deprecation notice and no redirect. A live GraphQL gateway runs at panel.chatfuel.com/graphql with introspection disabled, and a Swagger route on the API host is walled behind Google SSO. Chatfuel publishes no OpenAPI, no AsyncAPI, no first-party SDK and no MCP server.
 
-Backed by: y-combinator
+**Areas:** Company · Chatbots · Conversational AI · Messaging · Marketing Automation · Customer Service · WhatsApp · Instagram · Facebook Messenger · TikTok · No-Code · AI Agents
+
+## Chatfuel on APIs.io
+
+Everything profiled for Chatfuel is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/chatfuel/](https://apis.io/providers/chatfuel/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Chatfuel Contacts API](https://apis.io/apis/chatfuel/chatfuel-contacts-api/) — The only documented Chatfuel API operation as of 2026-08-13. POST https://panel.chatfuel.com/api/contacts/{automation_id}/whatsapp/ imports a batch of up to…
+- [Chatfuel Broadcasting API](https://apis.io/apis/chatfuel/chatfuel-broadcasting-api/) — HTTP API for sending any block or flow from a bot to a user via a POST request, including targeting users by attribute. Historically rate limited to 25…
+- [Chatfuel Dashboard API](https://apis.io/apis/chatfuel/chatfuel-dashboard-api/) — HTTP API to programmatically create and modify bots and pages — create bots, clone bot content, generate role-based invite links, and bind/unbind bots to…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [chatfuel-mcp.yml](https://apis.io/servers/chatfuel/chatfuel-mcp-yml/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Chatfuel Authentication](https://apis.io/security/chatfuel/chatfuel-authentication/)
+- [Chatfuel Domain Security](https://apis.io/security/chatfuel/chatfuel-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Chatfuel Plans Pricing](https://apis.io/plans/chatfuel/chatfuel-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Chatfuel Rate Limits](https://apis.io/rate-limits/chatfuel/chatfuel-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://chatfuel.com)
+- [Documentation](https://help.chatfuel.com/)
+- [Getting started](https://help.chatfuel.com/how-to-set-up-ai:-the-definitive-guide-1b934b06ecf88097b2a3dd91314c1a6b)
+- [API reference](https://help.chatfuel.com/create-contacts-in-chatfuel-via-api-23134b06ecf8800683b6efacab24b68d)
+- [Pricing](https://chatfuel.com/pricing)
+- [Sign up](https://app.chatfuel.com/)
+- [Support](https://help.chatfuel.com/)
+- [Blog](https://chatfuel.com/blog)
+- [Compliance](https://chatfuel.com/gdpr)
+- [Terms of service](https://chatfuel.com/files/TermsOfUse.pdf)
+- [Privacy policy](https://chatfuel.com/privacy-policy.html)
+- [GitHub](https://github.com/chatfuel-lab)
+- [Status](https://status.chatfuel.com/)
+
+## API Evangelist rating
+
+**Kin Score 41.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 39.5 |
+| Developer ergonomics | 57.1 |
+| Access clarity | 71.1 |
+
+**Agent readiness 5.0** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 29.4** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/chatfuel/](https://apis.io/providers/chatfuel/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Chatfuel: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/chatfuel/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
